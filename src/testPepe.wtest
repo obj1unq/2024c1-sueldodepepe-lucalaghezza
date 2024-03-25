@@ -48,7 +48,7 @@ describe "Sueldo parte 2" {
 	method initialize() {
 		medioTiempo.categoriaBase(cadete)
 		pepe.categoria(medioTiempo)
-		pepe.resultado(fijo)
+		pepe.resultado(porcentaje)
 		pepe.presentismo(demagogico)
 	}
 	
@@ -58,7 +58,7 @@ describe "Sueldo parte 2" {
 		pepe.aumentarInasistencias(1)
 		
 		
-		assert.equals(11300, pepe.sueldo())
+		assert.equals(11500, pepe.sueldo())
 	}
 	
 	
