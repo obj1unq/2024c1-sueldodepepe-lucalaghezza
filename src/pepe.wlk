@@ -39,6 +39,7 @@ object pepe {
 		 * la forma de calcularse conviene pasar el objeto y que el otro objeto 
 		 * decida como implementar el bono
 		 */ 
+		 
 	}
 	
 	
@@ -55,6 +56,35 @@ object gerente {
 object cadete {
 	method neto(){
 		return 20000
+	}
+}
+
+object vendedor {
+	const neto = 16000
+	var muchasVentas = false
+	
+	method activarAumentoPorMuchasVentas(){
+		muchasVentas = true
+		
+	}
+	method desactivarAumentoPorMuchasVentas(){
+		muchasVentas = false
+	}
+	
+	method neto(){
+		return if (muchasVentas) neto * 1.25 else neto
+	}
+}
+
+object medioTiempo {
+	var categoriaBase
+	
+	method categoriaBase(_categoriaBase){
+		categoriaBase = _categoriaBase
+	}
+	
+	method neto(){
+		return categoriaBase.neto() / 2
 	}
 }
 
@@ -102,3 +132,71 @@ object demagogico {
 	}
 }
 
+
+object sofia {
+	var categoria
+	var resultado
+	
+	method categoria(_categoria){
+		categoria = _categoria
+	}
+	
+	method resultado(_resultado){
+		resultado = _resultado
+	}
+	
+	method neto(){
+		return categoria.neto()
+	}
+	
+	method sueldo(){
+		return self.neto() + resultado.bono(self)
+
+	}
+}
+
+object roque {
+	const neto = 28000
+	const bonoAdicional = 9000
+	var resultado
+		
+	method resultado(_resultado){
+		resultado = _resultado
+	}
+	
+	method neto(){
+		return neto
+	}
+	
+	method sueldo(){
+		return self.neto() + resultado.bono(self) + bonoAdicional
+
+	}
+}
+
+
+object ernesto {
+	var compa
+	var presentismo
+	
+	method compa(_compa){
+		compa = _compa
+	}
+	
+	method presentismo(_presentismo){
+		presentismo = _presentismo
+	}
+	
+	method inasistencias(){
+		return 0
+	}
+	
+	method neto(){
+		return compa.neto()
+	}
+	
+	method sueldo(){
+		return self.neto() + presentismo.bono(self)
+	}
+	
+}

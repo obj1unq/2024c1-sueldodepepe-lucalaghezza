@@ -41,3 +41,39 @@ describe "Sueldo Pepe" {
 	}
 	
 }
+
+
+describe "Sueldo parte 2" {
+	
+	method initialize() {
+		medioTiempo.categoriaBase(cadete)
+		pepe.categoria(medioTiempo)
+		pepe.resultado(fijo)
+		pepe.presentismo(demagogico)
+	}
+	
+	
+	test "Test Pepe medio tiempo cadete, resultado fijo, presentismo demagogico: sueldo si faltó 1 vez" {
+		self.initialize()
+		pepe.aumentarInasistencias(1)
+		
+		
+		assert.equals(11300, pepe.sueldo())
+	}
+	
+	
+	test "Test Roque bono resultado fijo: sueldo" {
+		self.initialize()
+		roque.resultado(fijo)
+		
+		assert.equals(37800, roque.sueldo())
+	}
+	
+	test "Test Ernesto compa de pepe bono por presentismo de ajuste: sueldo" {
+		self.initialize()
+		ernesto.compa(pepe)
+		ernesto.presentismo(ajuste)
+		
+		assert.equals(10100, ernesto.sueldo())
+	}
+}
