@@ -200,3 +200,8 @@ object ernesto {
 	}
 	
 }
+
+
+// se pueden llamar: bonoResultado.valor(self)
+// agregar metodos resultado() presentismo() a cada persona para que si mismo lo calcule (y para test)
+// se puede llamar empleado en vez de persona en los argumentos que esperan los bonos
