@@ -2,9 +2,78 @@ import pepe.*
 
 describe "Sueldo Pepe" {
 	
-	test "Test 1" {
-		//TODO: Implementame
+	test "Test Pepe cadete, monto fijo y presentismo normal: sueldo si faltó 3 días" {
+	 		pepe.categoria(cadete)
+	 		pepe.resultado(fijo)
+	 		pepe.presentismo(normal)
+	 		pepe.aumentarInasistencias(3)
+	 		
+	 		assert.equals(20800, pepe.sueldo())
+	 		
+		
+	}
+	
+	test "Test Pepe gerente, resultado x porcentaje y presentismo nulo: sueldo si nunca faltó" {
+	 		pepe.categoria(gerente)
+	 		pepe.resultado(porcentaje)
+	 		pepe.presentismo(nulo)
+	 		
+	 		assert.equals(16500, pepe.sueldo())
+	 		
+		
+	}
+	
+	test "Test Pepe cadete, resultado x porcentaje, presentismo normal: sueldo si nunca faltó"{
+		pepe.categoria(cadete)
+		pepe.resultado(porcentaje)
+		pepe.presentismo(normal)
+		
+		assert.equals(24000, pepe.sueldo())
 	}
 
+	test "Test Pepe cadete, resultado x porcentaje, presentismo normal: sueldo si faltó 1 vez"{
+		pepe.categoria(cadete)
+		pepe.resultado(porcentaje)
+		pepe.presentismo(normal)
+		pepe.aumentarInasistencias(1)
+		
+		assert.equals(23000, pepe.sueldo())
+	}
 	
+}
+
+
+describe "Sueldo parte 2" {
+	
+	method initialize() {
+		medioTiempo.categoriaBase(cadete)
+		pepe.categoria(medioTiempo)
+		pepe.resultado(porcentaje)
+		pepe.presentismo(demagogico)
+	}
+	
+	
+	test "Test Pepe medio tiempo cadete, resultado fijo, presentismo demagogico: sueldo si faltó 1 vez" {
+		self.initialize()
+		pepe.aumentarInasistencias(1)
+		
+		
+		assert.equals(11500, pepe.sueldo())
+	}
+	
+	
+	test "Test Roque bono resultado fijo: sueldo" {
+		self.initialize()
+		roque.resultado(fijo)
+		
+		assert.equals(37800, roque.sueldo())
+	}
+	
+	test "Test Ernesto compa de pepe bono por presentismo de ajuste: sueldo" {
+		self.initialize()
+		ernesto.compa(pepe)
+		ernesto.presentismo(ajuste)
+		
+		assert.equals(10100, ernesto.sueldo())
+	}
 }
